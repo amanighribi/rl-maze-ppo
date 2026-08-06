@@ -15,7 +15,7 @@ model = PPO(
     tensorboard_log="./logs/",
 )
 
-model.learn(total_timesteps=50_000)
+model.learn(total_timesteps=200_000)
 model.save("ppo_maze")
 
 print("Training done. Model saved to ppo_maze.zip")
