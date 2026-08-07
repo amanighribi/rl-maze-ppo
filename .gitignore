@@ -7,3 +7,5 @@ runs/
 *.zip
 *.gif
 .vscode/
+node_modules/
+frontend/dist/

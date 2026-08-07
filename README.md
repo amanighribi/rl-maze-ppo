@@ -46,6 +46,23 @@ Monitor training live with TensorBoard:
 tensorboard --logdir logs
 ```
 
+## App (React + FastAPI)
+
+Backend (serves the trained model):
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+Frontend (in a separate terminal):
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Open the URL Vite prints (usually `http://localhost:5173`). Make sure the backend is running first — the frontend calls it directly.
+
 ## Project structure
 
 - `maze_env/maze_env.py` — custom Gymnasium environment (procedural maze generation, state, action, reward, render)
@@ -53,6 +70,8 @@ tensorboard --logdir logs
 - `evaluate.py` — runs the trained policy on one episode and exports a GIF
 - `evaluate_batch.py` — measures success rate across many episodes
 - `evaluate_failures.py` — isolates and prints failed episodes for debugging
+- `backend/main.py` — FastAPI server exposing `/new-maze` and `/solve`
+- `frontend/` — React app: generates mazes and animates the agent solving them
 
 ## Environment design
 
@@ -90,3 +109,4 @@ training reward curves:
 - [ ] Scale to larger grids / higher obstacle density
 - [ ] Randomize start/goal positions (harder generalization test)
 - [ ] Integrate trained model into the existing app (per internship scope)
+
